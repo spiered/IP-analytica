@@ -1,0 +1,69 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I lost my friends</title>
+
+  <script src="https://kit.fontawesome.com/757f212f25.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="alert alert-info alert-dismissible fade show" role="alert">
+    If you are using a VPN (Virtual Private Network) the datas we provide might be incorrect.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="root">
+    <h1 class="text-center">IP Analytics <i class="fas fa-chart-line"></i></h1>
+    <hr>
+    <span class="text-muted">Activate the geolocation API in your browser for exact coordinates:</span>
+    <button class="btn btn-sm btn-outline-dark" onclick="getLocation()">Activate</button>
+    <div>
+      <small id="demo" class="text-muted"></small>
+    </div>
+    <div id="mapholder">
+    </div>
+    <hr>
+    <ul class="list-group">
+  <li class="list-group-item list-group-item-primary">My information</li>
+  <li class="list-group-item">IP address: <%= client_ip_address %></li>
+  <li class="list-group-item">lattitude: 23940</li>
+  <li class="list-group-item">longitude: 29304</li>
+</ul>
+<hr>
+
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Any information (IP address, distance...)" aria-label="Recipient's username" aria-describedby="button-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-outline-info" type="button" id="button-addon2">Search</button>
+  </div>
+</div>
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-danger">List of virtual friends</li>
+      <% distances_with_unit.forEach((element)=>{ %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <i class="fas fa-crosshairs"></i></i> <%= element %> 
+        </div>
+          <div>
+            <small>
+              86.192.235.252
+            </small>
+            <span class="badge badge-info badge-pill">
+              ip v-4
+            </span>
+          </div>
+        </li>
+      <% }); %>
+    </ul>
+  <div>
+  <script src="script.js"></script>
+</body>
+</html>
